@@ -149,7 +149,6 @@ public class Punyet
 			while(repetir != 'S' && repetir != 'N');
 		}
 		while(repetir == 'S');
-
 	}
 
 }
