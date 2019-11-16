@@ -1,3 +1,55 @@
+/*
+ * Programa: Punyet
+ * 
+ * Comentario: Programa que nos permite jugar al juego de "los chinos” contra el ordenador. El ganador será el primero que venza en tres jugadas. 
+ * 			   El jugador podrá retirarse si lo desea, y perderá el juego.
+ * 
+ * Entradas: 
+ * 
+ * 		- int chinosUsuario (chinos elegidos por el usuario)
+ * 		- int totalUsuario (total de chinos elegidos por el usuario)
+ * 		- char siguienteRonda (opcion para jugar la siguiente ronda)
+ * 		- char repetir (opcion para jugar otra partida)
+ * 
+ * Salidas: 
+ * 
+ * 		- Mensajes de ayuda al usuario
+ * 		- int victoriasUsuario (El total de victorias del usuario en una partida)
+ * 		- int victoriasOrdenador (El total de victorias del ordenador en una partida)
+ * 		- int chinosOrdenador (La cantidad de chinos que ha elegido guardar el ordenador en su mano en una ronda)
+ * 		- int totalOrdenador (La cantidad de chinos total sumada que ha elegido el ordenador en una ronda)
+ * 
+ * Restricciones:
+ * 
+ * 		- La cantidad de chinos elegida por el usuario y el ordenador en su mano debe ser un número del 0 al 3
+ * 		- La cantidad total de chinos elegida por el usuario y el ordenador deber ser un número del 0 al 6 y no pueden ser iguales el uno del otro
+ * 		- La variable siguienteRonda deber ser un char que permita únicamente los valores 'S' (Sí) o 'N' (No)
+ * 		- La variable repetir deber ser un char que permita únicamente los valores 'S' (Sí) o 'N' (No)
+ * 
+ * PG
+ * Inicio
+ * 	Explicacion del Juego
+ * 	Hacer
+ * 		Para(contador = 0, contador menor o igual a 2 y jugador quiera jugar siguiente ronda, contador++)
+ * 			Leer y Validar cantidad chinos usuario
+ * 			Generar cantidad aleatoria chinos ordenador
+ * 			Calcular cantidad total
+ * 			Si contador es par
+ * 				Leer y Validar total usuario
+ * 				Generar y Mostrar total ordenador
+ * 			Sino
+ * 				Generar y Mostrar total ordenador
+ * 				Leer y Validar total usuario
+ * 			Fin_Si
+ * 			Comprobar ganador ronda
+ * 			Leer y Validar seguir jugando
+ * 		Fin_Para
+ * 		Comprobar ganador partida
+ * 		Leer y Validar repetir juego
+ * 	Mientras quiera seguir jugando
+ * Fin
+ */
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -23,7 +75,7 @@ public class Punyet
 			
 			for(int contador = 0; contador <= 2 && siguienteRonda == 'S'; contador++)
 			{
-				//Leer y Validar cantidad chinos
+				//Leer y Validar cantidad chinos usuario
 				System.out.println("Introduce que cantidad de chinos desea guardar en su mano");
 				do
 				{
@@ -59,7 +111,7 @@ public class Punyet
 					}
 					while(totalUsuario < 0 || totalUsuario > 6);
 					
-					//Generar y mostrar total ordenador
+					//Generar y Mostrar total ordenador
 					do
 					{
 						totalOrdenador = aleatorio.nextInt(7);
@@ -70,7 +122,7 @@ public class Punyet
 				}
 				else
 				{
-					//Generar y mostrar total ordenador
+					//Generar y Mostrar total ordenador
 					do
 					{
 					totalOrdenador = aleatorio.nextInt(7);
@@ -126,7 +178,7 @@ public class Punyet
 				}
 			}
 			
-			//Comprobar ganador ronda
+			//Comprobar ganador partida
 			if(victoriasUsuario > victoriasOrdenador)
 			{
 				System.out.println("Que bien! Le has ganado al ordenador "+victoriasUsuario+" a "+victoriasOrdenador);
@@ -140,7 +192,7 @@ public class Punyet
 				System.out.println("Habeis empatado "+victoriasUsuario+" a "+victoriasOrdenador);
 			}
 			
-			//Leer y Validar repetir
+			//Leer y Validar repetir juego
 			do
 			{
 				System.out.println("Desea volver a jugar?: (S o N)");
