@@ -65,7 +65,7 @@ public class Punyet
 		int chinosUsuario, chinosOrdenador, totalChinos, totalUsuario, totalOrdenador, victoriasUsuario = 0, victoriasOrdenador = 0;
 		
 		//Explicación del Juego
-		System.out.println("En construcción");
+		System.out.println("En cada ronda cada jugador guarda a escondidas entre ninguno y 3 chinos en su mano,\n que a continuación muestra cerrada al resto de jugadores, con el brazo estirado delante de sí.\n Entonces cada jugador por turno dice una cifra, intentando adivinar cuantos chinos suman todas las manos.\n\n\n");
 		
 		
 		do
@@ -73,17 +73,19 @@ public class Punyet
 			
 			siguienteRonda = 'S';
 			
+			System.out.println("			EMPECEMOS LA PARTIDA\n\n\n");
+			
 			for(int contador = 0; contador <= 2 && siguienteRonda == 'S'; contador++)
 			{
 				//Leer y Validar cantidad chinos usuario
-				System.out.println("Introduce que cantidad de chinos desea guardar en su mano");
+				System.out.print("Introduce que cantidad de chinos desea guardar en tu mano: ");
 				do
 				{
 					chinosUsuario = teclado.nextInt();
 					
 					if(chinosUsuario < 0 || chinosUsuario > 3)
 					{
-						System.out.println("Rercuerda que la cantidad de chinos que puede guardar en su mano debe ser un numero entre el 0 y el 3");
+						System.out.print("\nRercuerda que la cantidad de chinos que puede guardar en su mano debe ser un numero entre el 0 y el 3: ");
 
 					}
 				}
@@ -99,14 +101,14 @@ public class Punyet
 				if(contador % 2 == 0) //Si contador es par
 				{
 					//Leer y Validar total usuario
-					System.out.println("Introduce el total de chinos que crees que hay entre la suma de los tuyos con los elegidos por el ordenador:");
+					System.out.println("\nIntroduce el total de chinos que crees que hay entre la suma de los tuyos con los elegidos por el ordenador:");
 					do
 					{
 						totalUsuario = teclado.nextInt();
 						
 						if(totalUsuario < 0 || totalUsuario > 6)
 						{
-							System.out.println("Ese total no puede ser posible, el total maximo de chinos posibles es 6 y el minimo 0, vuelvelo a intentar:");
+							System.out.println("\nEse total no puede ser posible, el total maximo de chinos posibles es 6 y el minimo 0, vuelvelo a intentar:");
 						}
 					}
 					while(totalUsuario < 0 || totalUsuario > 6);
@@ -118,10 +120,28 @@ public class Punyet
 					}
 					while(totalOrdenador == totalUsuario || totalOrdenador < chinosOrdenador);
 					
-					System.out.println("El total de chinos elegido por el ordenador es: "+totalOrdenador+" chinos");
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					
+					System.out.println("\n\nEl total de chinos elegido por el ordenador es: "+totalOrdenador+" chinos\n\n");
+					
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 				else
 				{
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					
 					//Generar y Mostrar total ordenador
 					do
 					{
@@ -129,25 +149,27 @@ public class Punyet
 					}
 					while(totalOrdenador < chinosOrdenador);
 					
-					System.out.println("El total de chinos elegido por el ordenador es: "+totalOrdenador+" chinos");
+					System.out.println("\n\nEl total de chinos elegido por el ordenador es: "+totalOrdenador+" chinos\n");
 					
 					//Leer y Validar total usuario
-					System.out.println("Introduce el total de chinos que crees que hay entre la suma de los tuyos con los elegidos por el ordenador:");
+					System.out.print("Introduce el total de chinos que crees que hay entre la suma de los tuyos con los elegidos por el ordenador:");
 					do
 					{
 						totalUsuario = teclado.nextInt();
 						
 						if(totalUsuario < 0 || totalUsuario > 6)
 						{
-							System.out.println("Ese total no puede ser posible, el total maximo de chinos posibles es 6 y el minimo 0, vuelvelo a intentar:");
+							System.out.println("\nEse total no puede ser posible, el total maximo de chinos posibles es 6 y el minimo 0, vuelvelo a intentar:");
 						}
 						else if(totalUsuario == totalOrdenador)
 						{
-							System.out.println("No puedes elegir el mismo total que el ordenador, elige otro diferente");
+							System.out.println("\nNo puedes elegir el mismo total que el ordenador, elige otro diferente");
 						}
+						
+						System.out.println("\n\n");
 							
 					}
-					while(totalUsuario < 0 || totalUsuario > 6);
+					while(totalUsuario < 0 || totalUsuario > 6 || totalUsuario == totalOrdenador);
 				}
 				
 				//Comprobar ganador ronda
@@ -166,6 +188,8 @@ public class Punyet
 					System.out.println("Casi... Ninguno habeis acertado");
 				}
 				
+				System.out.println("");
+				
 				//Leer y Validar seguir jugando
 				if(contador != 2)
 				{
@@ -177,6 +201,8 @@ public class Punyet
 					while(siguienteRonda != 'S' && siguienteRonda != 'N');
 				}
 			}
+			
+			System.out.println("\n\n");
 			
 			//Comprobar ganador partida
 			if(victoriasUsuario > victoriasOrdenador)
@@ -195,7 +221,7 @@ public class Punyet
 			//Leer y Validar repetir juego
 			do
 			{
-				System.out.println("Desea volver a jugar?: (S o N)");
+				System.out.println("\nDesea volver a jugar?: (S o N)");
 				repetir = Character.toUpperCase(teclado.next().charAt(0));
 			}
 			while(repetir != 'S' && repetir != 'N');
