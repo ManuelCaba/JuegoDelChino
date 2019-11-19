@@ -30,11 +30,11 @@
  * Inicio
  * 	Explicacion del Juego
  * 	Hacer
- * 		Para(contador = 0, contador menor o igual a 2 y jugador quiera jugar siguiente ronda, contador++)
+ * 		Mientras no hayan ganado 3 rondas y quiera seguir jugando
  * 			Leer y Validar cantidad chinos usuario
  * 			Generar cantidad aleatoria chinos ordenador
  * 			Calcular cantidad total
- * 			Si contador es par
+ * 			Si contadorRondas es par
  * 				Leer y Validar total usuario
  * 				Generar y Mostrar total ordenador
  * 			Sino
@@ -43,7 +43,7 @@
  * 			Fin_Si
  * 			Comprobar ganador ronda
  * 			Leer y Validar seguir jugando
- * 		Fin_Para
+ * 		Fin_Mientras
  * 		Comprobar ganador partida
  * 		Leer y Validar repetir juego
  * 	Mientras quiera seguir jugando
@@ -62,7 +62,7 @@ public class Punyet
 		Random aleatorio = new Random();
 		
 		char repetir, siguienteRonda;
-		int chinosUsuario, chinosOrdenador, totalChinos, totalUsuario, totalOrdenador, victoriasUsuario = 0, victoriasOrdenador = 0;
+		int contadorRondas, chinosUsuario, chinosOrdenador, totalChinos, totalUsuario, totalOrdenador, victoriasUsuario = 0, victoriasOrdenador = 0;
 		
 		//Explicación del Juego
 		System.out.println("En cada ronda cada jugador guarda a escondidas entre ninguno y 3 chinos en su mano,\n que a continuación muestra cerrada al resto de jugadores, con el brazo estirado delante de sí.\n Entonces cada jugador por turno dice una cifra, intentando adivinar cuantos chinos suman todas las manos.\n\n\n");
@@ -73,10 +73,14 @@ public class Punyet
 			
 			siguienteRonda = 'S';
 			
+			contadorRondas = 0;
+			
 			System.out.println("			EMPECEMOS LA PARTIDA\n\n\n");
 			
-			for(int contador = 0; contador <= 2 && siguienteRonda == 'S'; contador++)
-			{
+			
+			
+			while(victoriasUsuario != 3 && victoriasOrdenador != 3 && siguienteRonda == 'S')
+			{	
 				//Leer y Validar cantidad chinos usuario
 				System.out.print("Introduce que cantidad de chinos desea guardar en tu mano: ");
 				do
@@ -98,7 +102,7 @@ public class Punyet
 				totalChinos = chinosUsuario + chinosOrdenador;
 				
 				
-				if(contador % 2 == 0) //Si contador es par
+				if(contadorRondas % 2 == 0) //Si contador es par
 				{
 					//Leer y Validar total usuario
 					System.out.println("\nIntroduce el total de chinos que crees que hay entre la suma de los tuyos con los elegidos por el ordenador:");
@@ -116,9 +120,9 @@ public class Punyet
 					//Generar y Mostrar total ordenador
 					do
 					{
-						totalOrdenador = aleatorio.nextInt(7);
+						totalOrdenador = chinosOrdenador + aleatorio.nextInt(4);
 					}
-					while(totalOrdenador == totalUsuario || totalOrdenador < chinosOrdenador);
+					while(totalOrdenador == totalUsuario);
 					
 					try {
 						Thread.sleep(1000);
@@ -143,11 +147,7 @@ public class Punyet
 					}
 					
 					//Generar y Mostrar total ordenador
-					do
-					{
-					totalOrdenador = aleatorio.nextInt(7);
-					}
-					while(totalOrdenador < chinosOrdenador);
+					totalOrdenador = chinosOrdenador + aleatorio.nextInt(4);
 					
 					System.out.println("\n\nEl total de chinos elegido por el ordenador es: "+totalOrdenador+" chinos\n");
 					
@@ -170,28 +170,34 @@ public class Punyet
 							
 					}
 					while(totalUsuario < 0 || totalUsuario > 6 || totalUsuario == totalOrdenador);
+					
+					contadorRondas++;           
 				}
 				
 				//Comprobar ganador ronda
 				if(totalUsuario == totalChinos)
 				{
-					System.out.println("Enhorabuena! Has ganado la ronda");
+					System.out.print("Enhorabuena! Has ganado la ronda");
 					victoriasUsuario++;
 				}
 				else if(totalOrdenador == totalChinos)
 				{
-					System.out.println("Una pena, victoria del ordenador...");
+					System.out.print("Una pena, victoria del ordenador...");
 					victoriasOrdenador++;
 				}
 				else
 				{
-					System.out.println("Casi... Ninguno habeis acertado");
+					System.out.print("Casi... Ninguno habeis acertado");
 				}
 				
-				System.out.println("");
+				System.out.println("   El total de chinos era: "+totalChinos+"\n");
+				
+				System.out.println("RECUENTO --> Usuario "+victoriasUsuario+" "+victoriasOrdenador+" Ordenador");
+				
+				
 				
 				//Leer y Validar seguir jugando
-				if(contador != 2)
+				if(victoriasOrdenador != 3 && victoriasUsuario != 3)
 				{
 					do
 					{
@@ -200,7 +206,6 @@ public class Punyet
 					}
 					while(siguienteRonda != 'S' && siguienteRonda != 'N');
 				}
-			}
 			
 			System.out.println("\n\n");
 			
