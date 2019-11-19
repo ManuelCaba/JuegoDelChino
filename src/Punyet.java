@@ -93,7 +93,7 @@ public class Punyet
 
 					}
 				}
-				while(chinosUsuario < 0 || chinosUsuario > 3);
+				while(chinosUsuario < 0 || chinosUsuario > 3);	
 				
 				//Generar cantidad aleatoria chinos ordenador
 				chinosOrdenador = aleatorio.nextInt(4);
@@ -169,9 +169,7 @@ public class Punyet
 						System.out.println("\n\n");
 							
 					}
-					while(totalUsuario < 0 || totalUsuario > 6 || totalUsuario == totalOrdenador);
-					
-					contadorRondas++;           
+					while(totalUsuario < 0 || totalUsuario > 6 || totalUsuario == totalOrdenador);        
 				}
 				
 				//Comprobar ganador ronda
@@ -192,7 +190,7 @@ public class Punyet
 				
 				System.out.println("   El total de chinos era: "+totalChinos+"\n");
 				
-				System.out.println("RECUENTO --> Usuario "+victoriasUsuario+" "+victoriasOrdenador+" Ordenador");
+				System.out.println("RECUENTO --> Usuario "+victoriasUsuario+" "+victoriasOrdenador+" Ordenador\n\n");
 				
 				
 				
@@ -206,6 +204,10 @@ public class Punyet
 					}
 					while(siguienteRonda != 'S' && siguienteRonda != 'N');
 				}
+				
+				contadorRondas++;
+			
+			}
 			
 			System.out.println("\n\n");
 			
