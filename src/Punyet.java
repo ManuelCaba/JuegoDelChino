@@ -42,7 +42,10 @@
  * 				Leer y Validar total usuario
  * 			Fin_Si
  * 			Comprobar ganador ronda
- * 			Leer y Validar seguir jugando
+ * 			Si ninguno de los dos ha llegado a 3 victorias
+ * 				Mostrar recuento de victorias
+ * 				Leer y Validar seguir jugando
+ * 			Fin_Si
  * 		Fin_Mientras
  * 		Comprobar ganador partida
  * 		Leer y Validar repetir juego
@@ -191,11 +194,13 @@ public class Punyet
 				System.out.println("   El total de chinos era: "+totalChinos+"\n");
 				
 				
-				//Leer y Validar seguir jugando
-				if(victoriasOrdenador != 3 && victoriasUsuario != 3)
+				
+				if(victoriasOrdenador != 3 && victoriasUsuario != 3) //Si ninguno de los dos ha llegado a 3 victorias
 				{
+					//Mostrar recuento de victorias
 					System.out.println("RECUENTO --> Usuario "+victoriasUsuario+" "+victoriasOrdenador+" Ordenador\n\n");
 					
+					//Leer y Validar seguir jugando
 					do
 					{
 						System.out.println("Quieres jugar la siguiente ronda?: (S/N)");
