@@ -18,6 +18,7 @@
  * 		- int victoriasOrdenador (El total de victorias del ordenador en una partida)
  * 		- int chinosOrdenador (La cantidad de chinos que ha elegido guardar el ordenador en su mano en una ronda)
  * 		- int totalOrdenador (La cantidad de chinos total sumada que ha elegido el ordenador en una ronda)
+ * 		- int totalChinos (El total de chinos entre la suma del ordenador y el usuario)
  * 
  * Restricciones:
  * 
@@ -238,6 +239,8 @@ public class Punyet
 			while(repetir != 'S' && repetir != 'N');
 		}
 		while(repetir == 'S');
+		
+		teclado.close();
 	}
 
 }
