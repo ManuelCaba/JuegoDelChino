@@ -190,13 +190,12 @@ public class Punyet
 				
 				System.out.println("   El total de chinos era: "+totalChinos+"\n");
 				
-				System.out.println("RECUENTO --> Usuario "+victoriasUsuario+" "+victoriasOrdenador+" Ordenador\n\n");
-				
-				
 				
 				//Leer y Validar seguir jugando
 				if(victoriasOrdenador != 3 && victoriasUsuario != 3)
 				{
+					System.out.println("RECUENTO --> Usuario "+victoriasUsuario+" "+victoriasOrdenador+" Ordenador\n\n");
+					
 					do
 					{
 						System.out.println("Quieres jugar la siguiente ronda?: (S/N)");
