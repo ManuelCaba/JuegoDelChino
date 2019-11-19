@@ -30,7 +30,7 @@
  * PG
  * Inicio
  * 	Explicacion del Juego
- * 	Hacer
+ * 	Repetir
  * 		Mientras no hayan ganado 3 rondas y quiera seguir jugando
  * 			Leer y Validar cantidad chinos usuario
  * 			Generar cantidad aleatoria chinos ordenador
